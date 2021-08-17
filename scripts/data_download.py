@@ -10,7 +10,7 @@ target_chem_id = targets.query(query_string)['target_chembl_id'].to_list()[0]
 bioactivity = new_client.activity.filter(target_chembl_id = target_chem_id).filter(standard_type="IC50")
 bioactivity = pd.DataFrame.from_dict(bioactivity)
 bioactivity = bioactivity[(bioactivity['standard_value'].notnull()) & (bioactivity['canonical_smiles'].notnull())]
-bioactivity['inhibitor_class'] = bioactivity['standard_value'].apply(lambda x: "strong" if float(x) < 1000.0 else "weak")
+bioactivity['inhibitor_class'] = bioactivity['standard_value'].apply(lambda x: 1 if float(x) < 1000.0 else 0)
 bioactivity = bioactivity[['molecule_chembl_id', 'canonical_smiles', 'standard_value', 'inhibitor_class']]
 bioactivity.to_csv('../data/raw/cov2_inhibitors.csv', index=False)
 # %%
