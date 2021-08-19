@@ -130,3 +130,8 @@ dmypy.json
 
 # data
 *.csv
+*.pt
+
+# file
+model_rough.py
+train.py

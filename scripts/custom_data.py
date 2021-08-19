@@ -1,23 +1,45 @@
-#%% Imports
-from torch_geometric.data import Data
+#%% Custom Data
+## This script is inspired from https://github.com/deepfindr/gnn-project/blob/main/dataset.py
+
+from torch_geometric.data import Data, Dataset
 from rdkit import Chem
 import numpy as np
 import torch
-# %% Creating Custom PyTorch Geometric Data Object
-class Cov2Data:
-    def __init__(self):
+from torch_geometric.transforms import RemoveIsolatedNodes
+import pandas as pd
+import os
+from tqdm import tqdm
+
+class Cov2Data(Dataset):
+    def __init__(self, root, filename, test=False, transform=None, pre_transform=None):
+        self.filename = filename
+        super(Cov2Data, self).__init__(root, transform, pre_transform)
+
+    @property
+    def raw_file_names(self):
+        return self.filename
+
+    @property
+    def processed_file_names(self):
+        self.data = pd.read_csv(self.raw_paths[0]).reset_index()
+        return [f'data_{i}.pt' for i in list(self.data.index)]
+
+    def download(self):
         pass
 
-    def getData(self,smiles, target):
-        self.smiles = smiles
-        self.target = target
-        mol_obj = Chem.MolFromSmiles(self.smiles)
-        node_feat_mat = self._get_node_feature_matrix(mol_obj)
-        edge_attr_mat = self._get_edge_attributes(mol_obj)
-        adjacency_mat = self._get_edge_index(mol_obj)
-        target_class = self._get_classes(self.target)
-        data = Data(X=node_feat_mat, edge_index=adjacency_mat, edge_attr=edge_attr_mat, y = target_class, smiles=self.smiles)
-        return data
+    def process(self):
+        self.rmv = RemoveIsolatedNodes()
+        self.data = pd.read_csv(self.raw_paths[0])
+        for index, mol in tqdm(self.data.iterrows(), total=self.data.shape[0]):
+            mol_obj = Chem.MolFromSmiles(mol['canonical_smiles'])
+            node_feat_mat = self._get_node_feature_matrix(mol_obj)
+            edge_attr_mat = self._get_edge_attributes(mol_obj)
+            adjacency_mat = self._get_edge_index(mol_obj)
+            target_class = self._get_classes(mol['inhibitor_class'])
+            data = Data(x=node_feat_mat, edge_index=adjacency_mat, 
+                        edge_attr=edge_attr_mat, y = target_class, smiles=mol['canonical_smiles'])
+            data = self.rmv(data)
+            torch.save(data, os.path.join(self.processed_dir, f'data_{index}.pt'))
     
     
     def _get_node_feature_matrix(self, mol):
@@ -68,3 +90,11 @@ class Cov2Data:
     def _get_classes(self, classes):
         classes = np.asarray([classes])
         return torch.tensor(classes, dtype=torch.int64)
+
+    def len(self):
+        return self.data.shape[0]
+
+    def get(self, idx):
+        data = torch.load(os.path.join(self.processed_dir, f'data_{idx}.pt'))
+        return data
+
