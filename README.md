@@ -80,8 +80,6 @@ Following list of things will be explained:
 <br/>**Recall** tries to answer the question, *What proportion of the actual positives is identified correctly?*
 <br/>**F1 Score** is the harmonic mean of precision and recall, which indicates the balance between these two.
 
-- I have calculated different metrics to check model performance. 
-
 - The test result on trained model comes out as follows:
 
 |Precision|Recall|F1-Score|Accuracy|Loss|
@@ -89,6 +87,6 @@ Following list of things will be explained:
 |0.5556|0.8333|0.6667|0.6154|0.1035|
 
 Metric scores for the test data are fairly good, considering I have very little amount of data to train and test. It kinda indicates that the model may generalized quite well over the large amount of data.
-- And from the below figure we can see that out of 12 strong inhibitors 10 of them are accurately classified, which seems to be quite good regardless the volumn of training and test data.
+- And from the below figure we can see that in test data, out of 12 strong inhibitors 10 of them are accurately classified, which seems to be quite good considering the volumn of training and test data.
 
 ![image](https://github.com/AsifAlFaisal/cov2-drug-discovery-demo/blob/main/saved_model/output_images/confusion_matrix_test.png) <br/>
