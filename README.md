@@ -54,7 +54,7 @@ Following list of things will be explained:
 - First all the atoms inside molecules considered as nodes and the connection between them considered as edges.
 <br/>Then with the help of RDKit all the atoms and bonds between them have been featurized.
 
-- After that, model input ready PyG graph data has been processed.
+- After that, PyG graph data for model input has been processed.
 
 - I have found only 102 compounds that can act on the desired target protein. Dataset Splits and Configuration are as follows:
 
