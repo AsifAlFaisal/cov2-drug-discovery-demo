@@ -27,7 +27,7 @@ Following list of things will be explained:
 * Every molecule or chemical compound or drugs composition can be considered as a Graph or Network of Atoms.
 * Imagine a molecule, in which, each of the atoms is a connection point (nodes) and the chemical bonding between atoms is the connection (edges).
   With this in mind, this whole molecule can be considered as a network of atoms or a graph.
-* When it comes to graphs, Graph Neural Nets are the new frontiners (frontiers??).
+* When it comes to graphs, Graph Neural Nets are the new frontiers.
 * In this little experiment, I attempted a GNN based approach to classify strong and weak inhibitors that can possibly act on a target protein of SARS Cov-2, in order to achieve desired effects.
 
 # 1. Experimental Setup
