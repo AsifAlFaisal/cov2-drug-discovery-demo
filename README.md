@@ -64,7 +64,7 @@ Following list of things will be explained:
 
 - Look at the following picture to get the high level overview.
 
-![image](https://github.com/AsifAlFaisal/cov2-drug-discovery-demo/blob/final/saved_model/output_images/Cov2GEN_Arch.png) <br/>
+![image](https://github.com/AsifAlFaisal/cov2-drug-discovery-demo/blob/main/saved_model/output_images/Cov2GEN_Arch.png) <br/>
 
 # 3. Experimental Results
 
