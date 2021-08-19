@@ -56,6 +56,12 @@ Following list of things will be explained:
 
 - After that model input ready PyG graph data has been processed.
 
+- I have found only 102 compounds that can act on the desired target protein. Dataset Split and Configuration are as follows:
+
+|Total|Train|Test|
+|----|----|----|
+|102|76|26|
+
 # 2. Design Cov2GEN model
 
 - This is a very simple and straightforward Graph Neural Net Architecture. I have named it as **Cov2GEN**.
