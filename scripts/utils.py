@@ -6,7 +6,7 @@ from tqdm import tqdm
 import time
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score
+from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score, f1_score
 
 def data_splitter(data, fraction=0.8, batch_size=2):
     data = data.shuffle()
@@ -66,8 +66,9 @@ def test(loader, model, criterion):
     precision = precision_score(all_truths, all_preds)
     recall = recall_score(all_truths, all_preds)
     cfm = confusion_matrix(all_truths, all_preds)
+    f1s = f1_score(all_truths, all_preds)
     _, ax = plt.subplots(figsize=(6,6)) 
     fig = sns.heatmap(cfm, annot=True, ax=ax)
     fig.figure.savefig("../saved_model/output_images/confusion_matrix_test.png")
     print(f"Test Results:\nLoss: {test_loss: .4f}, Accuracy: {acc: .4f}, \
-            \nPrecision: {precision: .4f}, Recall: {recall: .4f} \nConfusion Matrix: {cfm}")
+            \nPrecision: {precision: .4f}, Recall: {recall: .4f}, F1-Score: {f1s: .4f} \nConfusion Matrix: {cfm}")

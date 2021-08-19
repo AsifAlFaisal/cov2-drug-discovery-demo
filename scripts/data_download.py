@@ -12,7 +12,5 @@ bioactivity = pd.DataFrame.from_dict(bioactivity)
 bioactivity = bioactivity[(bioactivity['standard_value'].notnull()) & (bioactivity['canonical_smiles'].notnull())]
 bioactivity['inhibitor_class'] = bioactivity['standard_value'].apply(lambda x: 1 if float(x) < 1000.0 else 0)
 bioactivity = bioactivity[['molecule_chembl_id', 'canonical_smiles', 'standard_value', 'inhibitor_class']]
+bioactivity.drop_duplicates(subset=['molecule_chembl_id'], inplace=True)
 bioactivity.to_csv('../data/raw/cov2_inhibitors.csv', index=False)
-# %%
-
-# %%

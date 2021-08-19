@@ -131,7 +131,6 @@ dmypy.json
 # data
 *.csv
 *.pt
-*.pth
 
 # file
 model_rough.py
