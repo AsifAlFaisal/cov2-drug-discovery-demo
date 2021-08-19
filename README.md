@@ -40,7 +40,7 @@ Following list of things will be explained:
 ### 1.1 Target Protein Selection and Bioactivity Data Download
 
 - So, here we are. For this little experiment I've chosen a target protein of Coronavirus.
-<br/>But for SARS-Cov2, the only target single protein I have found is *Replicase polyprotein 1ab*.
+<br/>But for SARS-Cov2, the only target single protein I have found in ChEMBL is *Replicase polyprotein 1ab*.
 
 - Now for that target protein I have downloaded bioactivity data. I have considered those compounds that have IC50 values.
 <br/>So now you probably get the idea that my ultimate target is to find inhibiting compounds/drugs/molecules that will have strong potency.
