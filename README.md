@@ -1,7 +1,7 @@
 ## Computational Drug Discovery for SARS-COV-2 using Cov2GEN
 *NOTE: This repository is created only for experimental purpose to see whether Graph Neural Net (GNN) is a good choice for drug discovery. DO NOT TAKE definitive decision based on these findings.*
 
-**I'm an Electrical Engineer who happens to have an Masters Degree on Information Technology. I don't have expert domain knowledge in the fields of Pharmacology or Molecular biology or Chemoinformatics. However, I do have an immense interest to expand my knowledge on any one of these magnificent fields from a computational perspective. Before moving onto the following sections, I apologize in advance if I made any noob mistakes below. Thank you! Happy Reading!**
+**I'm an Electrical Engineer who happens to have an Masters Degree on Information Technology. I don't have expert domain knowledge in the fields of Pharmacology or Molecular biology or Chemoinformatics. However, I do have immense interest to expand my knowledge on any one of these magnificent fields from a computational perspective. Before moving onto the following sections, I apologize in advance if I made any noob mistakes below. Thank you! Happy Reading!**
 
 python version: 3.9.x
 
