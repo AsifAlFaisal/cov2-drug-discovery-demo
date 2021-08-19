@@ -56,7 +56,7 @@ Following list of things will be explained:
 
 - After that model input ready PyG graph data has been processed.
 
-- I have found only 102 compounds that can act on the desired target protein. Dataset Split and Configuration are as follows:
+- I have found only 102 compounds that can act on the desired target protein. Dataset Splits and Configuration are as follows:
 
 |Total|Train|Test|
 |----|----|----|
