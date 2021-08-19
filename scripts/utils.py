@@ -13,7 +13,7 @@ def data_splitter(data, fraction=0.8, batch_size=2):
     test_loader = DataLoader(test_set, batch_size=2)
     return train_loader, test_loader
 
-def train(loader, model, optimizer, criterion, num_epochs):
+def train(loader, model, optimizer, criterion, num_epochs, print_output):
     for epoch in range(num_epochs):
         correct = 0
         batch_loss = 0
@@ -33,4 +33,5 @@ def train(loader, model, optimizer, criterion, num_epochs):
             pbar.set_postfix({'step loss': loss.item()})
         train_acc = correct/len(loader.dataset)
         train_loss = batch_loss/len(loader.dataset)
-        print(f"EPOCH: {epoch+1}, Train Loss: {train_loss: .4f}, Train Acc: {train_acc: .4f}")
+        if print_output:
+            print(f"EPOCH: {epoch+1}, Train Loss: {train_loss: .4f}, Train Acc: {train_acc: .4f}")
